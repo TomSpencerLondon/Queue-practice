@@ -69,4 +69,16 @@ public class QueueTest {
         assertThatThrownBy(queue::remove)
                 .isInstanceOf(UnderflowException.class);
     }
+
+    @Test
+    void addXAndYThenRemoveXThenY() {
+        Queue queue = new Queue();
+        queue.add(7);
+        queue.add(4);
+
+        assertThat(queue.remove())
+                .isEqualTo(7);
+        assertThat(queue.remove())
+                .isEqualTo(4);
+    }
 }

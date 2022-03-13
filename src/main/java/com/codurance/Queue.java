@@ -4,6 +4,9 @@ public class Queue {
 
     private int number;
     private int size;
+    private int[] elements = new int[2];
+    int front;
+    int back;
 
     public boolean isEmpty() {
         return size == 0;
@@ -11,13 +14,13 @@ public class Queue {
 
     public void add(int element) {
         size++;
-        number = element;
+        elements[back++ % elements.length] = element;
     }
 
     public int remove() {
         requireNotEmpty();
         --size;
-        return number;
+        return elements[front++ % elements.length];
     }
 
     public int size() {
