@@ -8,14 +8,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class QueueTest {
     @Test
     void newQueueIsEmpty() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         assertThat(queue.isEmpty())
                 .isTrue();
     }
 
     @Test
     void emptyIsFalseAfterAdd() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(7);
         assertThat(queue.isEmpty())
                 .isFalse();
@@ -25,7 +25,7 @@ public class QueueTest {
 
     @Test
     void emptyIsTrueAfterAddThenRemove() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(7);
         queue.remove();
         assertThat(queue.isEmpty())
@@ -36,7 +36,7 @@ public class QueueTest {
 
     @Test
     void add7ThenRemoveReturns7() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(7);
         int element = queue.remove();
         assertThat(element)
@@ -45,7 +45,7 @@ public class QueueTest {
 
     @Test
     void add4ThenRemoveReturns4() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(4);
         int element = queue.remove();
         assertThat(element)
@@ -54,7 +54,7 @@ public class QueueTest {
 
     @Test
     void addTwoNumbersReturnsSizeOf2() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(4);
         queue.add(7);
 
@@ -64,7 +64,7 @@ public class QueueTest {
 
     @Test
     void removeFromEmptyQueueThrowsUnderflowException() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
 
         assertThatThrownBy(queue::remove)
                 .isInstanceOf(UnderflowException.class);
@@ -72,7 +72,7 @@ public class QueueTest {
 
     @Test
     void addXAndYThenRemoveXThenY() {
-        Queue queue = new Queue();
+        Queue queue = Queue.Make(2);
         queue.add(7);
         queue.add(4);
 
@@ -80,5 +80,16 @@ public class QueueTest {
                 .isEqualTo(7);
         assertThat(queue.remove())
                 .isEqualTo(4);
+    }
+
+    @Test
+    void addingMoreThanInitialCapacityIncreasesSize() {
+        Queue queue = Queue.Make(2);
+        queue.add(7);
+        queue.add(4);
+        queue.add(3);
+
+        assertThat(queue.remove())
+                .isEqualTo(7);
     }
 }
