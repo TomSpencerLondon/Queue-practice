@@ -17,6 +17,9 @@ public class Queue {
     }
 
     public int remove() {
+        if (size < 1) {
+            throw new UnderflowException();
+        }
         --size;
         isEmpty = true;
         return number;

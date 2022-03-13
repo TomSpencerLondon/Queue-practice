@@ -3,6 +3,7 @@ package com.codurance;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class QueueTest {
     @Test
@@ -59,5 +60,13 @@ public class QueueTest {
 
         assertThat(queue.size())
                 .isEqualTo(2);
+    }
+
+    @Test
+    void removeFromEmptyQueueThrowsUnderflowException() {
+        Queue queue = new Queue();
+
+        assertThatThrownBy(queue::remove)
+                .isInstanceOf(UnderflowException.class);
     }
 }
