@@ -23,3 +23,4 @@ It is an ordered list of objects with its use limited to insert elements at the 
 
 LinkedList, ArrayBlockingQueue and PriorityQueue are the most frequently used implementations.   
 ![java-queue](https://user-images.githubusercontent.com/27693622/158330344-49e935ae-55ee-499e-8aa5-fd5bcacdfcd0.png)
+http://tutorials.jenkov.com/java-collections/queue.html
