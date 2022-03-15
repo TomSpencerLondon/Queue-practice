@@ -22,3 +22,4 @@ The queue collection is used to hold the elements about to be processed and prov
 It is an ordered list of objects with its use limited to insert elements at the end of the list and deleting elements from the start of list i.e. it follows the FIFO or the First-In-First-Out principle.
 
 LinkedList, ArrayBlockingQueue and PriorityQueue are the most frequently used implementations.   
+![java-queue](https://user-images.githubusercontent.com/27693622/158330344-49e935ae-55ee-499e-8aa5-fd5bcacdfcd0.png)
